@@ -26,8 +26,10 @@ export default function Header() {
             <span className="sr-only">Flowers & Saints</span>
             <Image
               className="h-8 w-auto"
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/creative-SW6QDQbcVuwPgb6a2CYtYmRbsJa4k1.png"
+              src="/images/10.png"
               alt="Flowers & Saints Logo"
+              width={100}
+              height={64}
             />
           </Link>
         </div>
