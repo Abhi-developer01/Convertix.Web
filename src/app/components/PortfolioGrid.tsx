@@ -20,7 +20,7 @@ const projects = [
     description: "Elegant online presence for E-commerce platform",
     imageUrl: "/images/12.png",
     category: "Web Design",
-    redirectUrl: "https://delicious-eats-lime.vercel.app/",
+    redirectUrl: "https://evaraa.co/",
   },
   {
     id: 3,
