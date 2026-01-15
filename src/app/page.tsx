@@ -12,13 +12,22 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <WearYourStory />
+      {/* <WearYourStory /> */}
       <FeatureCarousel />
-      <PortfolioGrid />
-      <Timeline />
+      {/* <PortfolioGrid /> */}
+      <div id="portfolio">
+  <PortfolioGrid />
+</div>
+      {/* <Timeline /> */}
+      <div id="about">
+  <Timeline />
+</div>
       <Marquee />
-      <ContactForm />
-      <NewsletterSubscribe />
+      {/* <ContactForm /> */}
+      <div id="contact">
+  <ContactForm />
+</div>
+      {/* <NewsletterSubscribe /> */}
     </>
   )
 }

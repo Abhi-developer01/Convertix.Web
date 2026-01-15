@@ -163,108 +163,201 @@ export default function PortfolioGrid() {
 //     </section>
 //   )
 
+  // return (
+  //   <section className="py-20 bg-background">
+  //     <div className="max-w-7xl mx-[200px] px-6">
+
+  //       {/* Title */}
+  //       <motion.div
+  //         className="text-center mb-12"
+  //         initial={{ opacity: 0, y: 20 }}
+  //         animate={{ opacity: 1, y: 0 }}
+  //         transition={{ duration: 0.8 }}
+  //       >
+  //         <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+  //           Our Work
+  //         </h2>
+  //         <p className="mt-4 text-lg text-muted-foreground">
+  //           A showcase of our minimalist designs and creative solutions.
+  //         </p>
+  //       </motion.div>
+
+  //       {/* Filters */}
+  //       <div className="flex justify-center gap-4 mb-10 flex-wrap">
+  //         {categories.map((category) => (
+  //           <button
+  //             key={category}
+  //             onClick={() => setFilter(category)}
+  //             className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+  //               filter === category
+  //                 ? "bg-primary text-primary-foreground"
+  //                 : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+  //             }`}
+  //           >
+  //             {category}
+  //           </button>
+  //         ))}
+  //       </div>
+
+  //       {/* Grid */}
+  //       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-20">
+  //         <AnimatePresence>
+  //           {filteredProjects.map((project) => (
+  //             <motion.div
+  //               key={project.id}
+  //               layout
+  //               initial={{ opacity: 0 }}
+  //               animate={{ opacity: 1 }}
+  //               exit={{ opacity: 0 }}
+  //               transition={{ duration: 0.4 }}
+  //               className="rounded-3xl overflow-hidden shadow-xl bg-background"
+  //             >
+
+  //               {/* IMAGE CARD */}
+  //               <div className="relative w-full aspect-square overflow-hidden group px-6 py-6 ">
+  //                 <Link
+  //                   href={project.redirectUrl || "https://delicious-eats-lime.vercel.app/"}
+  //                   target="_blank"
+  //                   rel="noopener noreferrer"
+  //                   className="absolute inset-0 z-10"
+  //                 >
+  //                   {/* Image */}
+  //                   <Image
+  //                     src={project.imageUrl || "/placeholder.svg"}
+  //                     alt={project.title}
+  //                     fill
+  //                     className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+  //                   />
+
+  //                   {/* Gradient */}
+  //                   <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/20 to-transparent" />
+
+  //                   {/* Text on image */}
+  //                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-20">
+  //                     <div className="text-xs uppercase tracking-wide opacity-80">
+  //                       {project.category}
+  //                     </div>
+  //                     <h3 className="text-xl font-semibold mt-1">
+  //                       {project.title}
+  //                     </h3>
+  //                     <p className="text-white   text-sm leading-relaxed">
+  //                       {project.description}
+  //                     </p>
+  //                   </div>
+
+  //                   {/* Hover overlay */}
+  //                   {/* <motion.div
+  //                     className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 transition-opacity duration-300 z-30"
+  //                     whileHover={{ opacity: 1 }}
+  //                   >
+  //                     <p className="text-white text-center px-8 text-sm leading-relaxed">
+  //                       {project.description}
+  //                     </p>
+  //                   </motion.div> */}
+  //                 </Link>
+  //               </div>
+
+  //             </motion.div>
+  //           ))}
+  //         </AnimatePresence>
+  //       </motion.div>
+
+  //     </div>
+  //   </section>
+  // );
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-[200px] px-6">
+  <section className="py-16 sm:py-20 bg-background">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* Title */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            Our Work
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            A showcase of our minimalist designs and creative solutions.
-          </p>
-        </motion.div>
+      {/* Title */}
+      <motion.div
+        className="text-center mb-10 sm:mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-2xl sm:text-4xl font-bold text-foreground">
+          Our Work
+        </h2>
+        <p className="mt-3 text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto">
+          A showcase of our minimalist designs and creative solutions.
+        </p>
+      </motion.div>
 
-        {/* Filters */}
-        <div className="flex justify-center gap-4 mb-10 flex-wrap">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                filter === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-20 mt-20">
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="rounded-3xl overflow-hidden shadow-xl bg-background"
-              >
-
-                {/* IMAGE CARD */}
-                <div className="relative w-full aspect-square overflow-hidden group px-6 py-6 ">
-                  <Link
-                    href={project.redirectUrl || "https://delicious-eats-lime.vercel.app/"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0 z-10"
-                  >
-                    {/* Image */}
-                    <Image
-                      src={project.imageUrl || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-
-                    {/* Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/20 to-transparent" />
-
-                    {/* Text on image */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-20">
-                      <div className="text-xs uppercase tracking-wide opacity-80">
-                        {project.category}
-                      </div>
-                      <h3 className="text-xl font-semibold mt-1">
-                        {project.title}
-                      </h3>
-                      <p className="text-white   text-sm leading-relaxed">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Hover overlay */}
-                    {/* <motion.div
-                      className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 transition-opacity duration-300 z-30"
-                      whileHover={{ opacity: 1 }}
-                    >
-                      <p className="text-white text-center px-8 text-sm leading-relaxed">
-                        {project.description}
-                      </p>
-                    </motion.div> */}
-                  </Link>
-                </div>
-
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
+      {/* Filters */}
+      <div className="flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 flex-wrap">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setFilter(category)}
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition ${
+              filter === category
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
-    </section>
-  );
+
+      {/* Grid */}
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mt-10 sm:mt-16"
+      >
+        <AnimatePresence>
+          {filteredProjects.map((project) => (
+            <motion.div
+              key={project.id}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl bg-background"
+            >
+              {/* IMAGE CARD */}
+              <div className="relative w-full aspect-square overflow-hidden group p-4 sm:p-6">
+                <Link
+                  href={project.redirectUrl || "https://delicious-eats-lime.vercel.app/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-10"
+                >
+                  {/* Image */}
+                  <Image
+                    src={project.imageUrl || "/placeholder.svg"}
+                    alt={project.title}
+                    fill
+                    className="object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+
+                  {/* Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                  {/* Text on image */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white z-20">
+                    <div className="text-[10px] sm:text-xs uppercase tracking-wide opacity-80">
+                      {project.category}
+                    </div>
+                    <h3 className="text-sm sm:text-xl font-semibold mt-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm leading-relaxed opacity-90">
+                      {project.description}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </div>
+  </section>
+);
+
 }
 
 

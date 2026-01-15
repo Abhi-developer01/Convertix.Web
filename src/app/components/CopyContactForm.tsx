@@ -257,7 +257,6 @@
 //   )
 // }
 
-
 "use client"
 
 import { useState } from "react"
@@ -280,8 +279,6 @@ const formSchema = z.object({
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [success, setSuccess] = useState(false)
-
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -303,15 +300,10 @@ export default function ContactForm() {
       body: JSON.stringify(values),
     })
     const data = await res.json()
-    // if (data.success) {
-    //   alert("Thank you for your message. We'll get back to you soon!")
-    //   form.reset()
     if (data.success) {
-  setSuccess(true)
-  form.reset()
-}
-
-     else {
+      alert("Thank you for your message. We'll get back to you soon!")
+      form.reset()
+    } else {
       alert("Failed to send message. Please try again.")
     }
   } catch (err) {
@@ -344,38 +336,6 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-           {success ? (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="bg-card border rounded-xl p-10 shadow-lg text-center"
-          >
-            <div className="flex items-center justify-center w-16 h-16 mx-auto rounded-full bg-green-100">
-              <svg
-                className="w-8 h-8 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-
-            <h3 className="mt-4 text-lg font-semibold">
-              Message Sent Successfully
-            </h3>
-
-            <p className="mt-2 text-sm text-muted-foreground">
-              Our team will contact you shortly.
-            </p>
-
-            <Button className="mt-6" onClick={() => setSuccess(false)}>
-              Send another message
-            </Button>
-          </motion.div>
-        ) : (
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4">
               <FormField control={form.control} name="name" render={({ field }) => (
@@ -428,7 +388,6 @@ export default function ContactForm() {
               </Button>
             </form>
           </Form>
-          )}
         </motion.div>
       </div>
     </section>

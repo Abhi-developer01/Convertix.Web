@@ -182,10 +182,238 @@
 
 
 
+// "use client"
+
+// import { useRef, useState } from "react"
+// import { motion, useScroll, useSpring, useTransform, useInView } from "framer-motion"
+
+// const timelineEvents = [
+//   {
+//     year: "Project 01",
+//     title: "Restaurant Ordering Platform",
+//     description: "Minimalist brand + web experience for a digital-first restaurant.",
+//     details:
+//       "We built a complete ordering website with live menu, cart, and checkout. The new UI increased order completion rate by 42% and reduced customer drop-offs by 31%.",
+//     impact: "Higher online orders, reduced dependency on food aggregators, and stronger brand identity.",
+//     tech: "Next.js, Tailwind CSS, MongoDB, Razorpay",
+//   },
+//   {
+//     year: "Project 02",
+//     title: "E-commerce Web Experience",
+//     description: "High-converting shopping experience for an online store.",
+//     details:
+//       "We redesigned product discovery, checkout flow, and mobile UX. Page load improved by 2.4x and conversion rate grew by 27% in the first month.",
+//     impact: "Better SEO, faster load, and higher customer trust leading to more sales.",
+//     tech: "Next.js, TypeScript, Node.js, MongoDB",
+//   },
+//   {
+//     year: "Project 03",
+//     title: "GenieZap – Grocery & Food Ordering App",
+//     description: "End-to-end mobile + backend system for real-time grocery delivery.",
+//     details:
+//       "We built GenieZap using scalable backend, real-time inventory, and seamless payments. Vendors manage items and orders instantly via Supabase.",
+//     impact: "Enabled hyperlocal stores to go online in days instead of months and process 5× more orders digitally.",
+//     tech: "Next.js, Node.js, Express, Supabase, MongoDB, Razorpay, TypeScript",
+//   },
+//   {
+//     year: "Project 04",
+//     title: "Growth & Marketing Platform",
+//     description: "A digital campaign system to attract and convert high-value customers.",
+//     details:
+//       "Landing pages, ad funnels, and analytics dashboards were created to track ROI and optimize campaigns.",
+//     impact: "Generated 3× higher lead quality and 60% lower customer acquisition cost.",
+//     tech: "Next.js, Analytics APIs, Conversion Tracking",
+//   },
+// ]
+
+// const ProductOrb = ({ progress }: { progress: any }) => (
+//   <motion.div
+//     className="w-14 h-14 rounded-full bg-gradient-to-r from-primary via-purple-500 to-cyan-400 shadow-xl"
+//     style={{ scale: progress }}
+//   />
+// )
+
+// export default function Timeline() {
+  
+//   const containerRef = useRef(null)
+//   const timelineRef = useRef(null)
+//   // const { scrollYProgress } = useScroll({
+//   //   target: containerRef,
+//   //   offset: ["start end", "end start"],
+//   // })
+
+//   const { scrollYProgress } = useScroll({
+//   target: timelineRef,
+//   offset: ["start 20%", "end 90%"],
+// })
+
+
+//   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
+//   const orbScale = useTransform(scrollYProgress, [0, 1], [0.6, 1])
+
+//   return (
+//     <section ref={containerRef} className="py-24 bg-background overflow-hidden">
+//       <div className="max-w-7xl mx-auto px-6">
+
+//         {/* Header */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           className="text-center mb-20"
+//         >
+//           <h2 className="text-4xl font-bold">How We Build Impactful Products</h2>
+//           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+//             Every product we create is designed to generate revenue, scale operations and deliver delightful user experience.
+//           </p>
+//         </motion.div>
+
+//         {/* Timeline */}
+//         {/* <div className="relative">
+//           <motion.div
+//             className="absolute left-1/2 -translate-x-1/2 w-[3px] h-full bg-gradient-to-b from-primary via-purple-500 to-cyan-400 rounded-full"
+//             style={{ scaleY, originY: 0 }}
+//           />
+
+//           <motion.div
+//             className="sticky top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+//           >
+//             <ProductOrb progress={orbScale} />
+//           </motion.div>
+
+//           {timelineEvents.map((event, index) => (
+//             <TimelineEvent key={index} event={event} index={index} />
+//           ))}
+//         </div> */}
+//         <div ref={timelineRef} className="relative">
+
+//   <motion.div
+//     className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-primary via-purple-500 to-cyan-400 rounded-full"
+//     style={{ scaleY, originY: 0 }}
+//   />
+
+//   <motion.div className="sticky top-1/2 -translate-y-1/2 z-20 flex justify-center">
+//     {/* <ProductOrb progress={orbScale} /> */}
+//   </motion.div>
+
+//   {timelineEvents.map((event, index) => (
+//     <TimelineEvent key={index} event={event} index={index} />
+//   ))}
+
+// </div>
+
+//         <TechStack />
+//         <Pricing />
+//       </div>
+//     </section>
+//   )
+// }
+
+// function TimelineEvent({ event, index }: any) {
+//   const ref = useRef(null)
+//   const inView = useInView(ref, { once: true })
+
+//   return (
+//     <motion.div
+//       ref={ref}
+//       initial={{ opacity: 0, y: 80 }}
+//       animate={inView ? { opacity: 1, y: 0 } : {}}
+//       transition={{ duration: 0.8, delay: index * 0.1 }}
+//       className={`relative mb-20 flex w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
+//     >
+//       <div className="w-[46%] relative">
+//         <div className="absolute -inset-1 bg-primary/20 blur-xl rounded-xl opacity-50"></div>
+//         <div className="relative p-6 bg-background border rounded-xl shadow-lg">
+//           <span className="text-primary font-semibold">{event.year}</span>
+//           <h3 className="text-xl font-bold mt-1">{event.title}</h3>
+//           <p className="mt-2 text-muted-foreground">{event.description}</p>
+
+//           <p className="mt-4 text-sm">{event.details}</p>
+
+//           <div className="mt-4 p-3 bg-muted rounded-lg text-sm">
+//             <strong>Impact:</strong> {event.impact}
+//           </div>
+
+//           <div className="mt-3 text-xs text-primary">Tech: {event.tech}</div>
+//         </div>
+//       </div>
+//     </motion.div>
+//   )
+// }
+
+// function TechStack() {
+//   const stack = ["Next.js", "Node.js", "Express", "Supabase", "MongoDB", "TypeScript", "Razorpay", "Tailwind"]
+
+//   return (
+//     <div className="mt-32 text-center">
+//       <h3 className="text-3xl font-bold">Technology We Use</h3>
+//       <p className="text-muted-foreground mt-4">Built for scale, performance and security.</p>
+
+//       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+//         {stack.map((tech) => (
+//           <motion.div
+//             whileHover={{ scale: 1.1 }}
+//             key={tech}
+//             className="p-6 bg-background border rounded-xl shadow-md"
+//           >
+//             {tech}
+//           </motion.div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// function Pricing() {
+//   return (
+//     <div className="mt-32">
+//       <h3 className="text-3xl font-bold text-center mb-12">Pricing Plans</h3>
+
+//       <div className="grid md:grid-cols-3 gap-8">
+//         <PriceCard title="Startup" price="₹49,000" features={["Landing Page", "UI/UX", "Payment Gateway", "1 Month Support"]} />
+//         <PriceCard
+//           title="Business"
+//           price="₹1,49,000"
+//           highlighted
+//           features={["Web App + Admin", "Razorpay", "MongoDB / Supabase", "3 Months Support"]}
+//         />
+//         <PriceCard
+//           title="Enterprise"
+//           price="Custom"
+//           features={["Mobile App", "Real-time Orders", "Vendor Dashboard", "Analytics", "Dedicated Team"]}
+//         />
+//       </div>
+//     </div>
+//   )
+// }
+
+// function PriceCard({ title, price, features, highlighted = false }: any) {
+//   return (
+//     <motion.div
+//       whileHover={{ scale: 1.05 }}
+//       className={`p-8 rounded-xl border shadow-lg ${highlighted ? "border-primary" : ""}`}
+//     >
+//       <h4 className="text-xl font-bold">{title}</h4>
+//       <p className="text-3xl font-bold mt-4 text-primary">{price}</p>
+
+//       <ul className="mt-6 space-y-2 text-sm">
+//         {features.map((f: string) => (
+//           <li key={f}>✔ {f}</li>
+//         ))}
+//       </ul>
+
+//       <button className="mt-6 w-full py-3 bg-slate-800 text-white rounded-lg">
+//         Get Started
+//       </button>
+//     </motion.div>
+//   )
+// }
+
+
 "use client"
 
-import { useRef, useState } from "react"
-import { motion, useScroll, useSpring, useTransform, useInView } from "framer-motion"
+import { useRef } from "react"
+import { motion, useScroll, useSpring, useInView } from "framer-motion"
 
 const timelineEvents = [
   {
@@ -211,88 +439,66 @@ const timelineEvents = [
     title: "GenieZap – Grocery & Food Ordering App",
     description: "End-to-end mobile + backend system for real-time grocery delivery.",
     details:
-      "We built GenieZap using scalable backend, real-time inventory, and seamless payments. Vendors manage items and orders instantly via Supabase.",
-    impact: "Enabled hyperlocal stores to go online in days instead of months and process 5× more orders digitally.",
-    tech: "Next.js, Node.js, Express, Supabase, MongoDB, Razorpay, TypeScript",
+      "We built GenieZap using scalable backend, real-time inventory, and seamless payments.",
+    impact: "Stores processed 5× more orders digitally.",
+    tech: "Next.js, Node.js, Supabase, MongoDB",
   },
   {
+    // year: "Project 04",
+    // title: "Growth & Marketing Platform",
+    // description: "A digital campaign system to attract and convert high-value customers.",
+    // details:
+    //   "Landing pages, ad funnels, and analytics dashboards were created.",
+    // impact: "3× higher lead quality and 60% lower acquisition cost.",
+    // tech: "Next.js, Analytics APIs",
     year: "Project 04",
-    title: "Growth & Marketing Platform",
-    description: "A digital campaign system to attract and convert high-value customers.",
-    details:
-      "Landing pages, ad funnels, and analytics dashboards were created to track ROI and optimize campaigns.",
-    impact: "Generated 3× higher lead quality and 60% lower customer acquisition cost.",
-    tech: "Next.js, Analytics APIs, Conversion Tracking",
+title: "Museboard - Social Media Platform",
+description: "A social media platform designed to connect creators and audiences seamlessly.",
+details:
+  "Developed user profiles, content feeds, real-time notifications, and interactive media sharing. Implemented follower/following system, likes, comments, and analytics dashboards to track engagement.",
+impact: "Increased user engagement by 4× and boosted content sharing by 70%.",
+tech: "Next.js, Firebase, Socket.IO, Tailwind CSS, Supabase, Analytics APIs"
   },
 ]
 
-const ProductOrb = ({ progress }: { progress: any }) => (
-  <motion.div
-    className="w-14 h-14 rounded-full bg-gradient-to-r from-primary via-purple-500 to-cyan-400 shadow-xl"
-    style={{ scale: progress }}
-  />
-)
-
 export default function Timeline() {
-  const containerRef = useRef(null)
+  const timelineRef = useRef(null)
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
+    target: timelineRef,
+    offset: ["start 20%", "end 90%"],
   })
 
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
-  const orbScale = useTransform(scrollYProgress, [0, 1], [0.6, 1])
 
   return (
-    <section ref={containerRef} className="py-24 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-4xl font-bold">How We Build Impactful Products</h2>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Every product we create is designed to generate revenue, scale operations and deliver delightful user experience.
+        <div className="text-center mb-16">
+          <h2 className="text-2xl sm:text-4xl font-bold">
+            How We Build Impactful Products
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+            Every product we create is designed to scale revenue and deliver great UX.
           </p>
-        </motion.div>
+        </div>
 
         {/* Timeline */}
-        {/* <div className="relative">
+        <div ref={timelineRef} className="relative">
+
+          {/* Vertical line */}
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 w-[3px] h-full bg-gradient-to-b from-primary via-purple-500 to-cyan-400 rounded-full"
+            className="absolute left-4 sm:left-1/2 top-0 w-[3px] h-full bg-gradient-to-b from-primary via-purple-500 to-cyan-400"
             style={{ scaleY, originY: 0 }}
           />
 
-          <motion.div
-            className="sticky top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-          >
-            <ProductOrb progress={orbScale} />
-          </motion.div>
-
-          {timelineEvents.map((event, index) => (
-            <TimelineEvent key={index} event={event} index={index} />
-          ))}
-        </div> */}
-        <div ref={containerRef} className="relative">
-
-  <motion.div
-    className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-primary via-purple-500 to-cyan-400 rounded-full"
-    style={{ scaleY, originY: 0 }}
-  />
-
-  <motion.div className="sticky top-1/2 -translate-y-1/2 z-20 flex justify-center">
-    {/* <ProductOrb progress={orbScale} /> */}
-  </motion.div>
-
-  {timelineEvents.map((event, index) => (
-    <TimelineEvent key={index} event={event} index={index} />
-  ))}
-
-</div>
+          <div className="space-y-16">
+            {timelineEvents.map((event, index) => (
+              <TimelineEvent key={index} event={event} index={index} />
+            ))}
+          </div>
+        </div>
 
         <TechStack />
         <Pricing />
@@ -301,6 +507,8 @@ export default function Timeline() {
   )
 }
 
+/* ---------------------------- TIMELINE ITEM ---------------------------- */
+
 function TimelineEvent({ event, index }: any) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
@@ -308,45 +516,97 @@ function TimelineEvent({ event, index }: any) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 80 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      className={`relative mb-20 flex w-full ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
+      transition={{ duration: 0.6 }}
+      className={`relative flex w-full 
+        ${index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"}
+        justify-start`}
     >
-      <div className="w-[46%] relative">
-        <div className="absolute -inset-1 bg-primary/20 blur-xl rounded-xl opacity-50"></div>
-        <div className="relative p-6 bg-background border rounded-xl shadow-lg">
-          <span className="text-primary font-semibold">{event.year}</span>
+      <div className="w-full sm:w-[45%] pl-12 sm:pl-0">
+        <div className="p-6 bg-background border rounded-xl shadow-lg">
+          {/* <span className="text-primary font-semibold">{event.year}</span>
           <h3 className="text-xl font-bold mt-1">{event.title}</h3>
           <p className="mt-2 text-muted-foreground">{event.description}</p>
 
-          <p className="mt-4 text-sm">{event.details}</p>
+          <p className="mt-3 text-sm">{event.details}</p> */}
+          <span className="text-primary font-semibold text-xs sm:text-sm">
+  {event.year}
+</span>
 
-          <div className="mt-4 p-3 bg-muted rounded-lg text-sm">
+<h3 className="mt-1 font-bold text-base sm:text-xl">
+  {event.title}
+</h3>
+
+<p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+  {event.description}
+</p>
+
+<p className="mt-3 text-xs sm:text-sm leading-relaxed">
+  {event.details}
+</p>
+
+
+          {/* <div className="mt-4 p-3 bg-muted rounded-lg text-sm"> */}
+          <div className="mt-4 p-3 bg-muted rounded-lg text-xs sm:text-sm leading-relaxed">
+
             <strong>Impact:</strong> {event.impact}
           </div>
 
-          <div className="mt-3 text-xs text-primary">Tech: {event.tech}</div>
+          {/* <div className="mt-3 text-xs text-primary"> */}
+          <div className="mt-3 text-[10px] sm:text-xs text-primary">
+
+            Tech: {event.tech}
+          </div>
         </div>
       </div>
     </motion.div>
   )
 }
 
+/* ---------------------------- TECH STACK ---------------------------- */
+
+// function TechStack() {
+//   const stack = ["Next.js", "Node.js", "Supabase", "MongoDB", "TypeScript", "Razorpay", "Tailwind"]
+
+//   return (
+//     <div className="mt-32 text-center">
+//       <h3 className="text-xl sm:text-3xl font-bold">Technology We Use</h3>
+//       <p className="text-muted-foreground mt-4">
+//         Built for scale, performance and security.
+//       </p>
+
+//       <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+//         {stack.map((tech) => (
+//           <motion.div
+//             whileHover={{ scale: 1.05 }}
+//             key={tech}
+//             className="p-6 bg-background border rounded-xl shadow-md"
+//           >
+//             {tech}
+//           </motion.div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
 function TechStack() {
-  const stack = ["Next.js", "Node.js", "Express", "Supabase", "MongoDB", "TypeScript", "Razorpay", "Tailwind"]
+  const stack = ["Next.js", "Node.js", "Supabase", "MongoDB", "TypeScript", "Razorpay", "Tailwind"]
 
   return (
-    <div className="mt-32 text-center">
-      <h3 className="text-3xl font-bold">Technology We Use</h3>
-      <p className="text-muted-foreground mt-4">Built for scale, performance and security.</p>
+    <div className="mt-20 sm:mt-32 text-center">
+      <h3 className="text-lg sm:text-3xl font-bold">Technology We Use</h3>
+      <p className="text-muted-foreground mt-2 sm:mt-4 text-xs sm:text-base">
+        Built for scale, performance and security.
+      </p>
 
-      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="mt-8 sm:mt-12 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-6 px-2 sm:px-0">
         {stack.map((tech) => (
           <motion.div
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             key={tech}
-            className="p-6 bg-background border rounded-xl shadow-md"
+            className="py-2 px-3 sm:p-6 bg-background border rounded-lg sm:rounded-xl shadow-sm sm:shadow-md text-[11px] sm:text-base"
           >
             {tech}
           </motion.div>
@@ -356,47 +616,106 @@ function TechStack() {
   )
 }
 
+
+/* ---------------------------- PRICING ---------------------------- */
+
+// function Pricing() {
+//   return (
+//     <div className="mt-32">
+//       <h3 className="text-3xl font-bold text-center mb-12">Pricing Plans</h3>
+
+//       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+//         <PriceCard title="Startup" price="₹49,000" features={["Landing Page", "UI/UX", "Payments", "1 Month Support"]} />
+//         <PriceCard
+//           title="Business"
+//           price="₹1,49,000"
+//           highlighted
+//           features={["Web App", "Admin Panel", "Payments", "3 Months Support"]}
+//         />
+//         <PriceCard
+//           title="Enterprise"
+//           price="Custom"
+//           features={["Mobile App", "Real-time Orders", "Vendor Panel", "Analytics"]}
+//         />
+//       </div>
+//     </div>
+//   )
+// }
+
 function Pricing() {
   return (
-    <div className="mt-32">
-      <h3 className="text-3xl font-bold text-center mb-12">Pricing Plans</h3>
+    <div className="mt-20 sm:mt-32">
+      <h3 className="text-xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
+        Pricing Plans
+      </h3>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        <PriceCard title="Startup" price="₹49,000" features={["Landing Page", "UI/UX", "Payment Gateway", "1 Month Support"]} />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 px-2 sm:px-0">
+        <PriceCard title="Startup" price="₹49,000" features={["Landing Page", "UI/UX", "Payments", "1 Month Support"]} />
         <PriceCard
           title="Business"
           price="₹1,49,000"
           highlighted
-          features={["Web App + Admin", "Razorpay", "MongoDB / Supabase", "3 Months Support"]}
+          features={["Web App", "Admin Panel", "Payments", "3 Months Support"]}
         />
         <PriceCard
           title="Enterprise"
           price="Custom"
-          features={["Mobile App", "Real-time Orders", "Vendor Dashboard", "Analytics", "Dedicated Team"]}
+          features={["Mobile App", "Real-time Orders", "Vendor Panel", "Analytics"]}
         />
       </div>
     </div>
   )
 }
 
+
+// function PriceCard({ title, price, features, highlighted = false }: any) {
+//   return (
+//     <motion.div
+//       whileHover={{ scale: 1.05 }}
+//       className={`p-8 rounded-xl border shadow-lg bg-background ${
+//         highlighted ? "border-primary" : ""
+//       }`}
+//     >
+//       <h4 className="text-xl font-bold">{title}</h4>
+//       <p className="text-3xl font-bold mt-4 text-primary">{price}</p>
+
+//       <ul className="mt-6 space-y-2 text-sm">
+//         {features.map((f: string) => (
+//           <li key={f}>✔ {f}</li>
+//         ))}
+//       </ul>
+
+//       <button className="mt-6 w-full py-3 bg-slate-900 text-white rounded-lg">
+//         Get Started
+//       </button>
+//     </motion.div>
+//   )
+// }
+
 function PriceCard({ title, price, features, highlighted = false }: any) {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      className={`p-8 rounded-xl border shadow-lg ${highlighted ? "border-primary" : ""}`}
+      whileHover={{ scale: 1.04 }}
+      className={`p-5 sm:p-8 rounded-xl border shadow-md sm:shadow-lg bg-background ${
+        highlighted ? "border-primary" : ""
+      }`}
     >
-      <h4 className="text-xl font-bold">{title}</h4>
-      <p className="text-3xl font-bold mt-4 text-primary">{price}</p>
+      <h4 className="text-base sm:text-xl font-bold">{title}</h4>
 
-      <ul className="mt-6 space-y-2 text-sm">
+      <p className="text-xl sm:text-3xl font-bold mt-2 sm:mt-4 text-primary">
+        {price}
+      </p>
+
+      <ul className="mt-4 sm:mt-6 space-y-2 text-[11px] sm:text-sm">
         {features.map((f: string) => (
           <li key={f}>✔ {f}</li>
         ))}
       </ul>
 
-      <button className="mt-6 w-full py-3 bg-slate-800 text-white rounded-lg">
+      <button className="mt-4 sm:mt-6 w-full py-2 sm:py-3 text-sm sm:text-base bg-slate-900 text-white rounded-lg">
         Get Started
       </button>
     </motion.div>
   )
 }
+
