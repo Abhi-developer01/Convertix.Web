@@ -501,7 +501,7 @@ export default function Timeline() {
         </div>
 
         <TechStack />
-        <Pricing />
+        {/* <Pricing /> */}
       </div>
     </section>
   )
