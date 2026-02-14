@@ -592,7 +592,7 @@ function TimelineEvent({ event, index }: any) {
 // }
 
 function TechStack() {
-  const stack = ["Next.js", "Node.js", "Supabase", "MongoDB", "TypeScript", "Razorpay", "Tailwind"]
+  const stack = ["Next.js", "Node.js","Express.js", "Supabase", "MongoDB", "TypeScript", "Razorpay", "Tailwind",]
 
   return (
     <div className="mt-20 sm:mt-32 text-center">
